@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Intelligent- Car retail Website</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="{{ url_for('static', filename='https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/open-iconic-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/aos.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ionicons.min.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-datepicker.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.timepicker.css') }}">
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/icomoon.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Car<span>Retail Website</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a href="{{ url_for("index") }}" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">Project Report</a></li>
+                <li class="nav-item"><a href="{{ url_for("postad") }}" class="nav-link">Post ad</a></li>
+                <li class="nav-item"><a href="car.html" class="nav-link">Cars</a></li>
+                <li class="nav-item active"><a href="{{ url_for("smartBuy") }}" class="nav-link">Buy Smart</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- END nav -->
+
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url({{ url_for('static', filename='images/bg_3.jpg') }});" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
+            <div class="col-md-9 ftco-animate pb-5">
+                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog <i class="ion-ios-arrow-forward"></i></span></p>
+                <h1 class="mb-3 bread">Buy smart</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="ftco-section ftco-no-pt bg-light">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-md-12 featured-down">
+                <div class="row no-gutters">
+                    <div class="col-md-4 d-flex align-items-center">
+                        <form action="/smartBuy" method="POST" class="request-form ftco-animate bg-dark">
+                            <h2>To predict car according to your budget please fill the following details</h2>
+                            <div class="form-group">
+
+                                <label>Total budget</label>
+                                <input type="text" name="totalBudget" class="form-control" placeholder="Insert your total budget to buy car">
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="label">Monthly budget</label>
+                                <input type="text" name="monthlyBudget" class="form-control" placeholder="Insert Monthly budget you can spend on car">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="" class="label">Distance Travel by you in KM daily</label>
+                                <input type="text" name="travel" class="form-control" placeholder="Total distance trale by you daily in KM">
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="label">Fuel Pice</label>
+                                <input type="text" name="fuel" class="form-control" id="fuel" placeholder="Please update the fuel price">
+                            </div>
+
+
+                            <div class="form-group">
+                                <input type="submit" value="Predict car" class="btn btn-secondary py-3 px-4">
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+                            {% if search==True %}
+                            {% if found==True %}
+                                <p>
+                                    The Predicted Car is {{ car }}
+                                </p>
+                            {% else %}
+                                <p>
+                                    No such car found
+                                </p>
+                            {% endif %}
+                        {% endif %}
+
+</section>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-12 text-center d-flex ftco-animate">
+                <div class="blog-entry justify-content-end mb-md-5">
+                    <a href="blog-single.html" class="block-20 img" style="background-image: url({{ url_for('static', filename='images/image_1.jpg') }});">
+                    </a>
+                    <div class="text px-md-5 pt-4">
+                        <div class="meta mb-3">
+                            <div><a href="#"></a></div>
+                            <div><a href="#">Admin</a></div>
+                            <div><a href="#" class="meta-chat"><span class="#"></span> </a></div>
+                        </div>
+                        <h3 class="heading mt-2"><a href="#">Science block Forman Christian College</a></h3>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 text-center d-flex ftco-animate">
+                <div class="blog-entry justify-content-end mb-md-5">
+                    <a href="blog-single.html" class="block-20 img" style="background-image: url({{ url_for('static', filename='images/image_2.jpg') }});">
+                    </a>
+                    <div class="text px-md-5 pt-4">
+                        <div class="meta mb-3">
+                            <div><a href="#"></a></div>
+                            <div><a href="#">Admin</a></div>
+                            <div><a href="#" class="meta-chat"><span class="#"></span> </a></div>
+                        </div>
+                        <h3 class="heading mt-2"><a href="#">Project head's AutoShow at Punjab Stadium Lahore,2018</a></h3>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 text-center d-flex ftco-animate">
+                <div class="blog-entry">
+                    <a href="blog-single.html" class="block-20 img" style="background-image: url({{ url_for('static', filename='images/image_3.jpg') }});">
+                    </a>
+                    <div class="text px-md-5 pt-4">
+                        <div class="meta mb-3">
+                            <div><a href="#"></a></div>
+                            <div><a href="#">Admin</a></div>
+                            <div><a href="#" class="meta-chat"><span class="#"></span> </a></div>
+                        </div>
+                        <h3 class="heading mt-2"><a href="#">Some of the fastest cars of Pakistan out for weekend cruise in Lahore</a></h3>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col text-center">
+            <div class="block-27">
+                <ul>
+                    <li><a href="#">&lt;</a></li>
+                    <li class="active"><span>1</span></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">&gt;</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+<footer class="ftco-footer ftco-bg-dark ftco-section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2"><a href="#" class="logo">Car<span>Retail Website</span></a></h2>
+                    <p>This is a functional Car Retail Website using image recognition with deep learning and providing user to buy car smartly.</p>
+                    <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                        <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4 ml-md-5">
+                    <h2 class="ftco-heading-2">Information</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="Project report.html" class="py-2 d-block">About</a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">Customer Support</h2>
+                    <ul class="list-unstyled">
+
+                        <li><a href="post ad.html" class="py-2 d-block">How Post ad works</a></li>
+                        <li><a href="Buy smart.html" class="py-2 d-block">How Buy smart works</a></li>
+                        <li><a href="#" class="py-2 d-block">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">Have a Questions?</h2>
+                    <div class="block-23 mb-3">
+                        <ul>
+                            <li><span class="icon icon-map-marker"></span><span class="text">Zahoor Elahi Rd, Gulberg III, Lahore, Punjab 54600</span></li>
+                            <li><a href="#"><span class="icon icon-phone"></span><span class="text">0332 0606920</span></a></li>
+                            <li><a href="#"><span class="icon icon-envelope"></span><span class="text">  20-10604@formanite.fccollege.edu.pk</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery-migrate-3.0.1.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.easing.1.3.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.waypoints.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.stellar.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.magnific-popup.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/aos.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.animateNumber.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap-datepicker.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.timepicker.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/scrollax.min.js') }}"></script>
+<script src="{{ url_for('static', filename='https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false') }}"></script>
+<script src="{{ url_for('static', filename='js/google-map.js') }}"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+</html>

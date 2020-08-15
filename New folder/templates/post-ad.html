@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Intelligent- Car retail Website</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/open-iconic-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/aos.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ionicons.min.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-datepicker.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.timepicker.css') }}">
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/icomoon.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Car<span>Retail Website</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a href="{{ url_for("index") }}" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">Project Report</a></li>
+                <li class="nav-item active"><a href="post-ad.html" class="nav-link">Post ad</a></li>
+
+                <li class="nav-item"><a href="car.html" class="nav-link">Cars</a></li>
+                <li class="nav-item"><a href="{{ url_for("smartBuy") }}" class="nav-link">Buy Smart</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- END nav -->
+
+<section class="hero-wrap hero-wrap-2 js-halfheight" style="background-image: url({{ url_for('static', filename='images/bg_3.jpg') }});" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-halfheight align-items-end justify-content-start">
+            <div class="col-md-9 ftco-animate pb-5">
+                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span>
+                <h1 class="mb-3 bread">For Instructions gear down</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="ftco-section ftco-no-pt bg-light">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-md-12 featured-down">
+                <div class="row no-gutters">
+                    <div class="col-md-4 d-flex align-items-center">
+                        <div class="form-group">
+                            <div class="request-form ftco-animate bg-dark">
+                                <h2>To post ad click on the Button</h2>
+                                <div class="form-group">
+                                    <form action="/postad" method="POST" id="image-form" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <label>Select image</label>
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" name="image" id="image">
+
+                                                {% if found == False %}
+                                                    <label class="custom-file-label" for="image">Select</label>
+                                                {% else %}
+                                                    <label class="custom-file-label" for="image">{{ filename }}</label>
+                                                {% endif %}
+
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <button form="image-form" type="submit" style="margin-left: 120px;"  class="btn-success">
+                                        Upload</button> <span>&nbsp;&nbsp;</span><br/>
+
+
+                                    <form action="/" method="POST" id="post-form" >
+
+                                        {% if found == true %}
+                                            <label for="car">Car</label>
+                                            <input type="text" id="car" name="car" value="{{ car }}" class="form-control" placeholder="{{ car }}">
+                                            <br>
+                                            <label for="company">Company</label>
+                                            <input type="text" id="company" name="company" value="{{ company }}" class="form-control" placeholder="{{ company }}">
+                                            <br>
+                                            <label for="color" >Color</label>
+                                            <input type="text" class="form-control" name="color" value="{{ color }}" id="color" placeholder="{{ color }}">
+                                        {% else %}
+                                            <label for="car">Car</label>
+                                            <input type="text" id="car" name="car" class="form-control" placeholder="Car">
+                                            <br>
+                                            <label for="company">Company</label>
+                                            <input type="text" id="company" name="company" class="form-control" placeholder="Company">
+                                            <br>
+                                            <label for="color" >Color</label>
+                                            <input type="text" class="form-control" name="color" id="color" placeholder="Color">
+                                        {% endif %}
+                                        <br>
+                                        <label for="regist_city" >Registered City</label>
+                                        <input type="text" class="form-control" name="registCity" id="regist_city" placeholder="Registered city">
+                                        <br>
+                                        <label for="mileage" >Mileage</label>
+                                        <input type="text" class="form-control" name="mileage" id="mileage" placeholder="Mileage in km">
+                                        <br>
+                                        <input type="submit" form="post-form" value="Post Ad" class="btn btn-secondary py-3 px-4">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7 text-center heading-section ftco-animate">
+                <span class="subheading">Whats here?</span>
+                <h2 class="mb-3">Automatic Car Features Recognition</h2>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="services services-2 w-100 text-center">
+                    <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-car"></span></div>
+                    <div class="text w-100">
+                        <h3 class="heading mb-2">Car Name</h3>
+                        <p>Our deep learning model will automatic all detect the cars name</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="services services-2 w-100 text-center">
+                    <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-car"></span></div>
+                    <div class="text w-100">
+                        <h3 class="heading mb-2">Car Company</h3>
+                        <p>Our deep learning model will automatic all detect the cars make</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="services services-2 w-100 text-center">
+                    <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-car"></span></div>
+                    <div class="text w-100">
+                        <h3 class="heading mb-2">Colour</h3>
+                        <p>Our deep learning model will automaticall detect the cars color</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="services services-2 w-100 text-center">
+                    <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-car"></span></div>
+                    <div class="text w-100">
+                        <h3 class="heading mb-2">Innvotion</h3>
+                        <p>This is project is its own a new futristic way to lesser the hassale.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<footer class="ftco-footer ftco-bg-dark ftco-section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2"><a href="#" class="logo">Car<span>Retail Website</span></a></h2>
+                    <p>This is a functional Car Retail Website using image recognition with deep learning and providing user to buy car smartly.</p>
+                    <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                        <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4 ml-md-5">
+                    <h2 class="ftco-heading-2">Information</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="project-report.html" class="py-2 d-block">About</a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">Customer Support</h2>
+                    <ul class="list-unstyled">
+
+                        <li><a href="post ad.html" class="py-2 d-block">How Post ad works</a></li>
+                        <li><a href="buySmart.html" class="py-2 d-block">How Buy smart works</a></li>
+                        <li><a href="#" class="py-2 d-block">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">Have a Questions?</h2>
+                    <div class="block-23 mb-3">
+                        <ul>
+                            <li><span class="icon icon-map-marker"></span><span class="text">Zahoor Elahi Rd, Gulberg III, Lahore, Punjab 54600</span></li>
+                            <li><a href="#"><span class="icon icon-phone"></span><span class="text">0332 0606920</span></a></li>
+                            <li><a href="#"><span class="icon icon-envelope"></span><span class="text">  20-10604@formanite.fccollege.edu.pk</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery-migrate-3.0.1.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.easing.1.3.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.waypoints.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.stellar.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.magnific-popup.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/aos.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.animateNumber.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap-datepicker.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.timepicker.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/scrollax.min.js') }}"></script>
+<script src="{{ url_for('static', filename='https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false') }}"></script>
+<script>
+    function retrieveinfo(image) {
+        var xmlhttp = new XMLHttpRequest();
+
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var list = JSON.parse(this.responseText);
+                document.getElementById('car').value = list.car;
+                document.getElementById('company').value = list.company;
+                document.getElementById('color').value = list.color;
+                console.log(list.car);
+                document.getElementById('car').placeholder = list.car;
+                document.getElementById('company').placeholder = list.company;
+                document.getElementById('color').placeholder = list.color;
+            }
+        }
+        xmlhttp.open("GET", "http://127.0.0.1:5000/upload?image=image", true);
+        xmlhttp.send();
+    }
+</script>
+<script src="{{ url_for('static', filename='js/google-map.js') }}"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
